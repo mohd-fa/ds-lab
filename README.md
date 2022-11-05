@@ -1,6 +1,6 @@
 # ds-lab
 
-Programs done in CSL 201 Data Structure Lab
+### Programs done in CSL 201 Data Structure Lab
 - [Bubble Sort](https://github.com/mohd-fa/ds-lab/blob/main/1.1.bubblesort.c)
 - [Selection Sort](https://github.com/mohd-fa/ds-lab/blob/main/1.2.selectionsort.c)
 - [Insertion Sort](https://github.com/mohd-fa/ds-lab/blob/main/1.3.insertionsort.c)
