@@ -14,7 +14,7 @@ int main(){
 	int i=1;
 	int x;
 	while(i==1){
-		printf("\n0-display\n1-add element to begining\n2-add element to end\n3-add elem at specific pos\n4-delete element form begining\n5-delete element from end\n6-delete elem at specific pos\n9-exit program\nEnter option from list :");
+		printf("\n0-display\n1-add element to begining\n2-add element to end\n3-add elem at specific pos\n4-delete element form begining\n5-delete element from end\n6-delete elem at specific pos\n7-delete all element of key\n9-exit program\nEnter option from list :");
 		
 		scanf("%d",&o);
 		//insert at beg
@@ -48,6 +48,11 @@ int main(){
 			new = (struct Node*)malloc(sizeof(struct Node));
 			new->value = value;
 			new->next = NULL;
+            if(head == NULL){
+				head = new;
+                printf("\nElement added to end of linked list\n");
+                break;
+			}
 			ptr = head;
 			while(ptr->next != NULL)
 				ptr = ptr->next;
@@ -103,15 +108,21 @@ int main(){
 				printf("\nElement deleted from begining of linked list\n");
 			}
 			break;
-		case 6:
-			//remove from specific position
+        case 6:
+            //remove from specific position
 			if(head == NULL){
 				printf("\nNo elements in linked list\n");
 			}
 			else{
-				ptr = head;
 				printf("\nEntered elements to delete:\n");
 				scanf("%d",&x);
+                if(head->value == x){
+                    preptr = head;
+                    head = head->next;
+                    free(preptr);
+                    break;
+                }
+				ptr = head;
 				while(ptr->next != NULL && ptr->value != x){
 					preptr = ptr;
 					ptr = ptr->next;
@@ -124,6 +135,43 @@ int main(){
 				else
 					printf("\nEntered elements not in linked list\n");
 			}
+			break;
+        case 7:
+            //remove from all elemnet specific position
+			if(head == NULL){
+				printf("\nNo elements in linked list\n");
+			}
+			else{
+				printf("\nEntered elements to delete:\n");
+				scanf("%d",&x);
+                int flag = 0;
+                while( head != NULL && head->value == x){
+                    ptr = head;
+                    head = head->next;
+                    free(ptr);
+                    flag = 1;
+                    printf("\nElement with value %d deleted\n",x); 
+                }
+                if (head != NULL){
+                    preptr = head;
+                    ptr = head->next;
+                    while(ptr != NULL){
+                        if(ptr->value == x){
+                            preptr->next = ptr->next;
+                            free(ptr);
+                            flag = 1;
+                            printf("\nElement with value %d deleted\n",x);  
+                            ptr = preptr->next;
+                        }
+                        else{
+                            preptr = ptr;
+                            ptr = ptr->next;
+                        }
+                    }
+                    if (flag == 0)
+                        printf("\nEntered elements not in linked list\n");
+                    }
+			    }
 			break;
 		case 9:
 			while(head != NULL){
