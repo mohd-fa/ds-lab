@@ -17,11 +17,14 @@ int main(){
 		if (ptr == NULL)
 			printf("0\n\n");
 		else{
-			while(ptr->next != NULL){
+			while(ptr != NULL && ptr->exp != 0){
 				printf(" %0.2fx^%d +",ptr->coeff,ptr->exp);
 				ptr = ptr->next;
 			}
-			printf(" %0.2f=0\n\n",ptr->coeff,ptr->exp);
+			if(ptr->exp == 0)
+				printf(" %0.2f= 0\n\n",ptr->coeff);
+			else
+				printf(" = 0\n\n",ptr->coeff);
 		}
 	}
 
