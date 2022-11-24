@@ -15,12 +15,13 @@ int main(){
 	void display(struct Term *head){
 		struct Term *ptr = head;
 		if (ptr == NULL)
-			printf("%d\t\t%d\n",0,0);
-		else
-			printf("exp\t\tcoeff\n");
-		while(ptr != NULL){
-			printf("%d\t\t%f\n",ptr->exp,ptr->coeff);
-			ptr = ptr->next;
+			printf("0\n\n");
+		else{
+			while(ptr->next != NULL){
+				printf(" %0.2fx^%d +",ptr->coeff,ptr->exp);
+				ptr = ptr->next;
+			}
+			printf(" %0.2f=0\n\n",ptr->coeff,ptr->exp);
 		}
 	}
 
